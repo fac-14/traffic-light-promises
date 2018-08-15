@@ -18,6 +18,8 @@ var red = blinkLight(get("light-top"), "red");
 var yellow = blinkLight(get("light-middle"), "yellow");
 var green = blinkLight(get("light-bottom"), "green");
 
+
+// this creates the promises version of blinklight - returns a 
 const pBlinkLight = (element, colour) => {
   const blink = () => {
     return new Promise((resolve, reject) => {
@@ -59,11 +61,11 @@ light(light);
 
 // PROMISES SOLUTION
 green2()
-  .then(yellow2)
+  .then(yellow2) // .then is provided a function to use as a callback
   .then(red2)
   .then(red2)
   .then(red2)
   .then(() => {
     red2();
-    yellow2().then(green2);
+    yellow2().then(green2); // I'm not sure how to get around nesting this - seems to kind of ruin the spirit of promises. 
   });
